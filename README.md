@@ -20,6 +20,7 @@ If you are just getting started with Kubernetes, you can follow along day by day
 | [Day 06](./Day06%20-%20Services/README.md) | Services |
 | [Day 07](./Day07%20-%20Namespaces/README.md) | Namespaces |
 | [Day 08](./Day08%20-%20Multi-Container-Pods/README.md) | Multi-Container Pods and Init Containers |
+| [Day 09](./Day09%20-%20Daemonsets/README.md) | DaemonSets |
 
 ---
 
