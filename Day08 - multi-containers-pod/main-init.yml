@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: main-init
+  name: main-init
+spec:
+  containers:
+  - image: busybox:1.28
+    name: main-container
+    resources: {}
+    env:
+    - name: CONTAINER_TYPE
+      value: "Main"
+    command: ["sh", "-c", "echo 'The app is running .....' && sleep 3600"]
+  initContainers:
+  - image: busybox:1.28
+    name: init-container
+    resources: {}
+    command: ["sh", "-c"]
+    args:
+    - |
+      until nslookup main-service.default.svc.cluster.local; do
+        echo "Waiting for main-service to be available..."
+        sleep 2
+      done
+      echo "main-service is available"
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
