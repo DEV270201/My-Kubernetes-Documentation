@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: nginx-frontend-2
+  name: nginx-frontend-2
+spec:
+  tolerations:
+  - operator: "Exists"
+  containers:
+  - image: nginx:latest
+    name: nginx-frontend-2
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

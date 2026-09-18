@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: nginx-frontend
+  name: nginx-frontend
+spec:
+  tolerations:
+  - key: "tier"
+    operator: "Equal"
+    value: "backend"
+    effect: "NoSchedule"
+  containers:
+  - image: nginx:latest
+    name: nginx-frontend
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
