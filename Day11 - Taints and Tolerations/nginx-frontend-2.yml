@@ -5,6 +5,8 @@ metadata:
     run: nginx-frontend-2
   name: nginx-frontend-2
 spec:
+  nodeSelector:
+    node-role.kubernetes.io/control-plane: ""
   tolerations:
   - operator: "Exists"
   containers:
