@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: nginx-frontend
+  name: nginx-frontend
+spec:
+  nodeSelector:
+    node-role.kubernetes.io/hostname: "second-kub-cluster-worker"
+  tolerations:
+  - key: "app"
+    operator: "Equal"
+    value: "nginx"
+    effect: "NoExecute"
+  containers:
+  - image: nginx:latest
+    name: nginx-frontend
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+
+  

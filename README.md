@@ -25,6 +25,7 @@ If you are just getting started, follow along day by day. If you are looking for
 | [Day 09](./Day09%20-%20Daemonsets/README.md) | 👾 DaemonSets |
 | [Day 10](./Day10%20-%20Static%20Pods%20and%20Manual%20Scheduling/README.md) | 📌 Static Pods and Manual Scheduling |
 | [Day 11](./Day11%20-%20Taints%20and%20Tolerations/README.md) | 🚧 Taints and Tolerations |
+| [Day 12](./Day12%20-%20Horizontal%20Pod%20Autoscaling/README.md) | 📈 Horizontal Pod Autoscaling |
 
 ---
 
@@ -51,5 +52,5 @@ If you are just getting started, follow along day by day. If you are looking for
 <p align="center">
   <img src="https://img.shields.io/badge/Kubernetes-Beginner%20Friendly%20Documentation-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white" alt="Kubernetes" />
   <img src="https://img.shields.io/badge/KinD-Local%20Clusters-0db7ed?style=for-the-badge&logo=docker&logoColor=white" alt="KinD" />
-  <img src="https://img.shields.io/badge/Days%20Completed-11-brightgreen?style=for-the-badge" alt="Days" />
+  <img src="https://img.shields.io/badge/Days%20Completed-12-brightgreen?style=for-the-badge" alt="Days" />
 </p>
