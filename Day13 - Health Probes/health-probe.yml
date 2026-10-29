@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: probe-experiment
+  labels:
+    app: test-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: test-app
+  template:
+    metadata: # <-- Fixed the typo here
+      labels:
+        app: test-app
+    spec:
+      containers:
+      # container 1
+      - name: web-server
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: shared-data
+          mountPath: /usr/share/nginx/html
+
+      # container 2
+      - name: probe-helper
+        image: busybox
+        command:
+        - "/bin/sh"
+        - "-c"
+        - |
+          echo "Hello from $(hostname)" > /data/index.html
+          touch /data/healthy
+          sleep 3600
+        readinessProbe:
+          exec:
+            command:
+            - cat
+            - /data/healthy
+          initialDelaySeconds: 5
+          periodSeconds: 2
+        volumeMounts:
+        - name: shared-data
+          mountPath: /data
+
+      volumes:
+      - name: shared-data
+        emptyDir: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: experiment-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: test-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
